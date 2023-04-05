@@ -69,3 +69,27 @@ summary(lm(H~W))
 # From the result, the statistic slope is observed 11.458, and thus Pr(>|t|)=2e-16, null hypothesis rejected on alpha=0.05
 # (h)
 # From the result, the statistic intercept is observed 3.169, and thus Pr(>|t|)=0.00207, null hypothesis rejected on alpha=0.05
+# 2.12
+# (a)
+Sunday<-c(488.506, 798.298, 235.084, 299.451, 559.093, 1133.249, 348.744, 417.779, 344.522, 323.084, 620.752, 423.305,202.614, 1531.527, 553.479, 685.975, 324.241, 983.24, 1762.015, 960.308, 284.611, 407.76, 982.663, 557, 440.923, 268.06, 262.048, 432.502, 338.355,704.322, 585.681, 267.781, 408.343, 1165.567)
+Daily<-c(391.952, 516.981, 355.628, 238.555, 537.78, 733.775, 198.832, 252.624, 206.204, 231.177, 449.755, 288.571, 185.736, 1164.388, 444.581, 412.871, 272.28, 781.796, 1209.225, 825.512, 223.748, 354.843, 515.523, 220.465, 337.672, 197.12, 133.239, 374.009, 273.844, 570.364, 391.286, 201.86, 321.626, 838.902)
+plot(Daily, Sunday)
+# The data in scatter plot spread linearly. It is plausible relationship.
+# (b)
+summary(lm(Sunday~Daily))
+# The regression line would be Y=1.33971X+13.83563
+# (c)
+dt(32,0.025)
+cor(Daily, Sunday)
+# (e)
+# R^2=0.9181, Sunday circulations is accounted for 91.81% of proportion of the variability.
+# (f)
+predict(lm(Sunday~Daily), data.frame(Daily=500), interval='confidence') # confidence: 신뢰구간
+# confidence interval is (644.1951, 723.191)
+# (g)
+predict(lm(Sunday~Daily), data.frame(Daily=500), interval='prediction') # prediction: 예측구간, 회귀모형으로부터 얻은 예측에 대한 신뢰구간
+# confidence interval is (457.3367, 910.0493)=> prediction interval contains confidence interval when daily is 500,000
+# (h)
+predict(lm(Sunday~Daily), data.frame(Daily=2000), interval='prediction')
+# The range of confidence interval is too wide, so it is less precise than the interval in (g)
+# 2.13
