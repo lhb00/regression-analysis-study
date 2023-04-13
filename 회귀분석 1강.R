@@ -32,3 +32,27 @@ abline(lm(sheight~fheight, data=father.son))
 for(i in 2:12){
   text(mean(fs.withg[fs.withg$g==i,"fheight"]),mean(fs.withg[fs.withg$g==i,"sheight"]),'m')
 }
+
+# + 강의자료 내용
+# Data
+x <- c(1, 2, 3, 4, 4, 5, 6, 6, 7, 8, 9, 9, 10, 10)
+y <- c(23, 29, 49, 64, 74, 87, 96, 97, 109, 119,
+       149, 145, 154, 166)
+p027 <- data.frame(x = x, y = y)
+
+# Scatter plot
+plot(p027)
+
+# Fitting 
+lm.fit <- lm(formula = y ~ x, data = p027)
+predicted <- lm.fit$fitted.values
+residual <- lm.fit$residuals
+summary(lm.fit)
+# Fitted Values & Residuals
+cbind(OBS = 1:length(x), predicted, residual)
+cbind(OBS = 1:length(x), x, predicted, residual)
+cbind(OBS = 1:length(x), x, y, predicted, residual)
+# plot of fitted line
+plot(p027)
+abline(coef = lm.fit$coefficients, lty = 2) # lm.fit$ coefficients : 첫번째는 intercept, 두번째는 x의 기울기가 나옴
+points(8, predicted[10], col=2, pch=19, cex=3)
