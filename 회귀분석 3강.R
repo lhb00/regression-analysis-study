@@ -1,5 +1,14 @@
 rm(list=ls())
 SP <- read.csv('http://www1.aucegypt.edu/faculty/hadi/RABE5/Data5/P060.txt', header=T, sep='\t')
+# 강의 보충 내용
+model1 <- lm(Y~X1+X2, data = SP)
+summary(model1)
+resi1<-model1$residuals
+model2<-lm(X2~X1, data = SP)
+summary(model2)
+resi2<-model2$residuals
+model3<-lm(resi1~resi2)
+summary(model3)
 # Getting the fitted table
 model <- lm(Y~., data = SP)
 summary(model)

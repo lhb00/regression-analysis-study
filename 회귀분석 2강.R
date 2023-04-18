@@ -7,7 +7,7 @@ lines(c(0,4),c(2,2),lty=2);lines(c(2,2),c(0,4),lty=2)
 x<-runif(30,0,4);e<-rnorm(30,0,.4) # runif, rnorm: 난수 생성
 points(x, x+e,pch=19)
 text(c(3.8,.2,.2,3.8), c(2.3, 2.3, 1.7, 1.7),
-     c(expression((1)),expression((2)),expression((3)),expression((4)))
+     c(expression((1)),expression((2)),expression((3)),expression((4))))
 plot(c(panel1[1],panel2[1]),c(panel1[2],panel2[2]),type='n',axes=F,xlab=expression(X),ylab=expression(Y))
 arrows(panel1[1],0,panel2[1],0,length=.1);arrows(0,panel1[2],0,panel2[2],length=.1)
 lines(c(0,4),c(2,2),lty=2);lines(c(2,2),c(0,4),lty=2)
@@ -32,7 +32,7 @@ plot(df$X3, df$Y3, pch=19, xlab='X3', ylab='Y3')
 abline(coef=coef(lm(Y3~X3, data=df)), col='red')
 plot(df$X4, df$Y4, pch=19, xlab = 'X4', ylab='Y4')
 abline(coef=coef(lm(Y4 ~ X4, data = df)), col='red')
-#coef(회선의 계수)
+# coef(회선의 계수)
 # 22번 슬라이드
 df<-read.csv('http://www1.aucegypt.edu/faculty/hadi/RABE5/Data5/P031.txt',
              sep='\t')
@@ -47,8 +47,8 @@ plot(function(x) dt(x, df = 3), -3, 3, col = 'blue', add = T)
 # 32번 슬라이드
 par(mfrow=c(1,2))
 plot(c(-3,3), c(-.05,.5), xlab='',ylab='',axes=F,type='n')
-plot(function(x)dt(x, 1), -3,3, add=T)
-seq0<-seq(2.2, 2.0, length.out=100)
+plot(function(x)dt(x, 1), -3,3, add=T) # add=T로 그래프 겹쳐 그리기
+seq0<-seq(2.2, 2.9, length.out=100)
 x <- c(seq0,rev(seq0))
 y1 <- rep(0, 100)
 y2 <- rev(dt(seq0,1))
@@ -58,7 +58,7 @@ text(2.5, dt(2.5,1)+.03, expression(alpha));text(0,-0.25,0);text(2.2,-.025, expr
 plot(c(-3,3),c(-.05,.5),xlab='',ylab='',axes=F,type='n')
 plot(function(x)dt(x,1),03,3,add=T)
 seq0<-seq(-2.9,-2.2,length.out=100)
-x<-c(seq0,rev(seq0))
+x<-c(seq0,rev(seq0)) # rev():원소 역순 배열
 y1<-rep(0,100)
 y2<-rev(dt(seq0,1))
 polygon(x,c(y1,y2),col="gray")
@@ -68,7 +68,7 @@ text(-2.5, dt(-2.5,1) + .03, expression(pt(t)));text(0,-0.25,0); text(-2.2, -.02
 rm(list=ls())
 # 37번 슬라이드
 x<-c(1,2,3,4,4,5,6,6,7,8,9,9,10,10)
-y<-c(23,29,49,64,74,87,96,97,109,119,149,154,166)
+y<-c(23,29,49,64,74,87,96,97,109,119,149,145,154,166)
 p027<-data.frame(x = x, y = y)
 plot(p027)
 lm.fit<-lm(formula=y~x,data=p027)
@@ -79,4 +79,3 @@ cbind(OBS=1:length(x), predicted, residual)
 plot(p027)
 abline(coef=lm.fit$coefficients, lty=2)
 points(8, predicted[10],col=2,pch=19,cex=3)
-
